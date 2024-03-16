@@ -3,6 +3,6 @@
 
 
 # 参考
--《STL源码剖析》
-- https://github.com/zouxiaohang/TinySTL
-- https://github.com/Alinshans/MyTinySTL
+1：《STL源码剖析》
+2：https://github.com/zouxiaohang/TinySTL
+3：https://github.com/Alinshans/MyTinySTL
