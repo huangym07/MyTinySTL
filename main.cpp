@@ -1,10 +1,10 @@
 #include <iostream>
-#include "alloc.h"
+#include "allocator.h"
 
 int main() {
     for (int i = 1; i <= 100000; i++) {
         if (i % 128 != 0) {
-            MyTinySTL::alloc::allocate(i % 128 * sizeof(int));
+            MyTinySTL::allocator<int>::allocate(i % 128 * sizeof(int));
         }
     }
     system("pause");
