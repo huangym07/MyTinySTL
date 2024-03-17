@@ -1,6 +1,7 @@
 #ifndef __ALLOCATOR_H__
 #define __ALLOCATOR_H__
 
+#include <cassert> // for assert
 #include "alloc.h"
 #include "construct.h"
 
@@ -17,8 +18,8 @@ namespace MyTinySTL {
 		typedef size_t		size_type;
 		typedef ptrdiff_t	difference_type;
     public:
-        static void* allocate();
-        static void* allocate(size_t n);
+        static T* allocate();
+        static T* allocate(size_t n);
         static void deallocate(T* ptr);
         static void deallocate(T* ptr, size_t n);
 
@@ -27,6 +28,31 @@ namespace MyTinySTL {
         static void destroy(T* ptr);
         static void destroy(T* first, T* last);
     };
+    template<typename T>
+    T* allocator<T>::allocate() {
+        return static_cast<T*>(alloc::allocate(sizeof(T)));
+    }
+    template<typename T>
+    T* allocator<T>::allocate(size_t n) {
+        assert(n);
+        return static_cast<T*>(alloc::allocate(sizeof(T) * n));
+    }
+    template<typename T>
+    void allocator<T>::deallocate(T* ptr) {
+        alloc::deallocate(static_cast<void*>(ptr), sizeof(T));
+    }
+    template<typename T>
+    void allocator<T>::deallocate(T* ptr, size_t n) {
+        alloc::deallocate(static_cast<void*>(ptr), sizeof(T) * n);
+    }
+    template<typename T>
+    void allocator<T>::construct(T* ptr) {
+        construct(ptr);
+    }
+    template<typename T> 
+    void allocator<T>::construct(T* ptr, const T& value) {
+        construct(ptr, value);
+    }
 }
 
 #endif

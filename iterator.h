@@ -72,11 +72,11 @@ namespace MyTinySTL{
 
 	template<class Iterator>
 	struct iterator_traits {
-		typedef typename Iterator::Category     iterator_category;
+		typedef typename Iterator::iterator_category     iterator_category;
 		typedef typename Iterator::value_type	value_type;
-		typedef typename Iterator::Distance		difference_type;
-		typedef typename Iterator::Pointer		pointer;
-		typedef typename Iterator::Reference 	reference;
+		typedef typename Iterator::difference_type		difference_type;
+		typedef typename Iterator::pointer		pointer;
+		typedef typename Iterator::reference 	reference;
 	};
 
     // 对指针的特化

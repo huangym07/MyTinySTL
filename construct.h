@@ -26,7 +26,7 @@ namespace MyTinySTL {
         destroy(first, last, value_type(first));
     }
     template<typename ForwardIt, typename T>
-    inline void destroy(Forward first, ForwardIt last, T*) {
+    inline void destroy(ForwardIt first, ForwardIt last, T* ptr) {
         typedef typename __type_traits<T>::has_trivial_destructor trivial_destructor;
         destroy(first, last, trivial_destructor());
     }
