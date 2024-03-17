@@ -104,7 +104,7 @@ namespace MyTinySTL{
 		return category();
 	}
 	template<class Iterator>
-	inline typename iterator_traits<Iterator>::value_type
+	inline typename iterator_traits<Iterator>::value_type*
 		value_type(const Iterator&){
 		return static_cast<typename iterator_traits<Iterator>::value_type*>(0);
 	}
